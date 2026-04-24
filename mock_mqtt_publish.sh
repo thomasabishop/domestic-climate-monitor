@@ -11,7 +11,7 @@ TIMESTAMP=$(date +"%Y-%m-%dT%H:%M:%S")
 declare -i i=0
 while (( i<8 ))
 	do 
-		mosquitto_pub --host ${MQTT_BROKER_IP} --port ${MQTT_BROKER_PORT} --topic test_topic\
+		mosquitto_pub --host ${MQTT_BROKER_IP} --port ${MQTT_BROKER_PORT} --topic sensors/domestic/$1 \
 			--message "{\"temperature\": ${MOCK_TEMP_DATA[i]}, \"humidity\": ${MOCK_HUM_DATA[i]}, \"timestamp\": \"$(date +"%Y-%m-%dT%H:%M:%S")\"}"
 		(( i++ ))
 		sleep 1
