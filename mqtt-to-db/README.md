@@ -1,4 +1,4 @@
-# mqtt-db-interface/
+# mqtt-to-db/
 
 Python program that subscribes to MQTT topics and inserts climate data into
 SQLite database.
