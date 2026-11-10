@@ -19,25 +19,21 @@ See dedicated README.
 
 ## mock_mqtt_publish.sh
 
-Script for simulating runtime MQTT publishing.
+Script for simulating runtime MQTT publishing. Pass in room to mock as
+parameter, e.g.
 
 ```sh
-./mock_mqtt_publish
+./mock_mqtt_publish lounge
 ```
 
 Example output:
 
-```
-Client null received PUBLISH (d0, q0, r0, m0, 'test_topic', ... (77 bytes))
-{"temperature": 22.81, "humidity": 51.51, "timestamp": "2026-04-24T11:16:49"}
-Client null received PUBLISH (d0, q0, r0, m0, 'test_topic', ... (77 bytes))
-{"temperature": 22.62, "humidity": 51.22, "timestamp": "2026-04-24T11:16:50"}
-Client null received PUBLISH (d0, q0, r0, m0, 'test_topic', ... (77 bytes))
-{"temperature": 22.61, "humidity": 51.40, "timestamp": "2026-04-24T11:16:51"}
-```
+```sh
+mosquitto_sub -h 192.168.178.49 -p 1883 -d -t sensors/domestic/#
 
-## Useful code
-
-```
-mosquitto_sub -h 192.168.178.49 -p 1883 -d -t test_topic
+Client null received PUBLISH (d0, q0, r0, m0, 'sensors/domestic/lounge', ... (77 bytes))
+{"temperature": 22.09, "humidity": 51.82, "timestamp": "2026-04-24T14:58:47"}
+Client null received PUBLISH (d0, q0, r0, m0, 'sensors/domestic/lounge', ... (77 bytes))
+{"temperature": 22.81, "humidity": 51.51, "timestamp": "2026-04-24T14:58:48"}
+Client null received PUBLISH (d0, q0, r0, m0, 'sensors/domestic/lounge', ... (77 bytes))
 ```
